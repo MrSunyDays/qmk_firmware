@@ -16,110 +16,58 @@
 #include QMK_KEYBOARD_H
 
 enum layer_names {
-    /* _MTGAP, */
-    _QWERTY,
+    _BASE,
     _LOWER,
     _RAISE,
     _MOUSE,
     _ADJUST
 };
 
-/* #define QWERTY TG(_QWERTY)  // Toggle qwerty layout */
 #define LOWER  MO(_LOWER)
 #define RAISE  MO(_RAISE)
 #define ADJUST MO(_ADJUST)
 #define MOUSE  MO(_MOUSE)
 
-/* MTGAP Home Row Mods */
+/* Mods */
 // Left hand
-/* #define GUI_N  LGUI_T(KC_N) */
-/* #define ALT_I  LALT_T(KC_I) */
-/* #define SHFT_E LSFT_T(KC_E) */
-/* #define CTRL_A LCTL_T(KC_A) */
-
-/* // Right hand */
-/* #define CTRL_H RCTL_T(KC_H) */
-/* #define SHFT_T RSFT_T(KC_T) */
-/* #define ALT_S  LALT_T(KC_S) */
-/* #define GUI_R  RGUI_T(KC_R) */
-
-/* QWERTY Home Row Mods */
-// Left hand
-#define GUI_A  LGUI_T(KC_A)
-#define ALT_S  LALT_T(KC_S)
-#define SHFT_D LSFT_T(KC_D)
+#define GUI_S LGUI_T(KC_S)
+#define ALT_D  LALT_T(KC_D)
 #define CTRL_F LCTL_T(KC_F)
+#define SHFT_V LSFT_T(KC_V)
 
 // Right hand
 #define CTRL_J   RCTL_T(KC_J)
-#define SHFT_K   RSFT_T(KC_K)
-#define ALT_L    LALT_T(KC_L)
-#define GUI_SCLN RGUI_T(KC_SCLN)
+#define ALT_K    LALT_T(KC_K)
+#define GUI_L LGUI_T(KC_L)
+#define SHFT_M RSFT_T(KC_M)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  /* MTGAP + Home Row Mods
-   * ,-----------------------------------------+         +-----------------------------------------.
-   * | Tab  |   Y  |   P  |   O  |   U  |   J  |         |   K  |   D  |   L  |   C  |   W  | Bspc |
-   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |  -   |   N  |   I  |   E  |   A  |   ,  |         |   M  |   H  |   T  |   S  |   R  |Enter |
-   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |  \   |   Q  |   Z  |   /  |   .  |   ;  |         |   B  |   F  |   G  |   V  |   X  |  '   |
-   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   *                             |Mouse |Lower |  Space  |Raise |QWERTY|
-   *                             +-------------/         \-------------+
-   */
-  /* [_MTGAP] = LAYOUT_reviung41( */
-  /*   KC_TAB,  KC_Y,  KC_P,  KC_O,    KC_U,    KC_J,            KC_K,  KC_D,   KC_L,   KC_C,  KC_W,  KC_BSPC, */
-  /*   KC_MINS, GUI_N, ALT_I, SHFT_E,  CTRL_A,  KC_COMM,         KC_M,  CTRL_H, SHFT_T, ALT_S, GUI_R, KC_ENT, */
-  /*   KC_BSLS, KC_Q,  KC_Z,  KC_SLSH, KC_DOT,  KC_SCLN,         KC_B,  KC_F,   KC_G,   KC_V,  KC_X,  KC_QUOT, */
-  /*                                   XXXXXXX, LOWER,   KC_SPC, RAISE, QWERTY */
-  /* ), */
-
-
-  /* QWERTY + Home Row Mods
-   * ,-----------------------------------------+         +-----------------------------------------.
-   * | Tab  |   Q  |   W  |   E  |   R  |   T  |         |   Y  |   U  |   I  |   O  |   P  | Bspc |
-   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |  -   |   A  |   S  |   D  |   F  |   G  |         |   H  |   J  |   K  |   L  |   ;  |Enter |
-   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |  \   |   Z  |   X  |   C  |   V  |   B  |         |   N  |   M  |   ,  |   .  |   /  |  '   |
-   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   *                             |Mouse |Lower |  Space  |Raise |      |
-   *                             +-------------/         \-------------+
-   */
-  /* [_QWERTY] = LAYOUT_reviung41( */
-  /*   _______, KC_Q,  KC_W,  KC_E,   KC_R,    KC_T,             KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     _______, */
-  /*   _______, GUI_A, ALT_S, SHFT_D, CTRL_F,  KC_G,             KC_H,    CTRL_J, SHFT_K,  ALT_L,  GUI_SCLN, _______, */
-  /*   _______, KC_Z,  KC_X,  KC_C,   KC_V,    KC_B,             KC_N,    KC_M,   KC_COMM, KC_DOT, KC_SLSH,  _______, */
-  /*                                  _______, _______, _______, _______, _______ */
-  /* ), */
-
-  /* QWERTY
+  /* Base
    * ,-----------------------------------------+         +-----------------------------------------.
    * |  \   |   Q  |   W  |   E  |   R  |   T  |         |   Y  |   U  |   I  |   O  |   P  |  -   |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |  =   |   A  |   S  |   D  |   F  |   G  |         |   H  |   J  |   K  |   L  |   ;  |  '   |
+   * |  =   |   A  |S/GUI |D/Alt |F/Ctrl|   G  |         |   H  |J/Ctrl|K/Alt |L/GUI |   ;  |  '   |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * | Tab  |   Z  |   X  |   C  |   V  |   B  |         |   N  |   M  |   ,  |   .  |   /  |  `   |
+   * | Tab  |   Z  |   X  |   C  |V/Shft|   B  |         |   N  |M/Shft|   ,  |   .  |   /  |  `   |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    *                             | Lwr  | Bspc |  Space  | Entr | Rse  |
    *                             +-------------/         \-------------+
    */
-  [_QWERTY] = LAYOUT_reviung41(
-    KC_BSLS, KC_Q,  KC_W,  KC_E,   KC_R,    KC_T,          KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,     KC_MINS,
-    KC_EQL,  GUI_A, ALT_S, SHFT_D, CTRL_F,  KC_G,          KC_H,  CTRL_J, SHFT_K,  ALT_L,  GUI_SCLN, KC_QUOT,
-    KC_TAB,  KC_Z,  KC_X,  KC_C,   KC_V,    KC_B,          KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH,  KC_GRV,
-                                   KC_BSPC, LOWER, KC_SPC, RAISE, KC_ENT
+  [_BASE] = LAYOUT_reviung41(
+    KC_BSLS, KC_Q,  KC_W,  KC_E,  KC_R,    KC_T,          KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_MINS,
+    KC_EQL,  KC_A,  GUI_S, ALT_D, CTRL_F,  KC_G,          KC_H,  CTRL_J, ALT_K,   GUI_L,  KC_SCLN, KC_QUOT,
+    KC_TAB,  KC_Z,  KC_X,  KC_C,  SHFT_V,  KC_B,          KC_N,  SHFT_M, KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
+                                  KC_BSPC, LOWER, KC_SPC, RAISE, KC_ENT
   ),
 
   /* Lower
    * ,-----------------------------------------+         +-----------------------------------------.
-   * | Esc  |  F1  |  F2  |  F3  |  F4  |  F5  |         |      | Home | PgDn | PgUp | End  |      |
+   * |      |  F1  |  F2  |  F3  |  F4  |  F5  |         |      | Home | PgDn | PgUp | End  |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    * | Caps |  F6  |  F7  |  F8  |  F9  | F10  |         |      | Left | Down |  Up  |Right |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |      |  F11 |  F12 |      |      |      |         |      | Del  |      |      |      |      |
+   * | Esc  |  F11 |  F12 |      |      |      |         |      | Del  |      |      |      |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    *                             |      |      |         |      |      |
    *                             +-------------/         \-------------+
@@ -133,19 +81,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Raise
    * ,-----------------------------------------+         +-----------------------------------------.
-   * |      |  1   |  2   |  3   |  4   |  5   |         |  6   |  7   |  8   |  9   |   0  |      |
+   * |  0   |  1   |  2   |  3   |  4   |  5   |         |  6   |  7   |  8   |  9   |      |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    * |      |  !   |  @   |  #   |  $   |  %   |         |  ^   |  &   |  *   |      |      |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * |      |      |  <   |  [   |  (   |  {   |         |  }   |  )   |  ]   |  >   |      |      |
+   * |      |      |      |  [   |  (   |  {   |         |  }   |  )   |  ]   |      |      |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    *                             |      |      |         |      |      |
    *                             +-------------/         \-------------+
    */
   [_RAISE] = LAYOUT_reviung41(
-    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,             KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
+    KC_0,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,             KC_6,    KC_7,    KC_8,    KC_9,    XXXXXXX,    XXXXXXX,
     XXXXXXX, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,          KC_CIRC, KC_AMPR, KC_ASTR, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, KC_LABK, KC_LBRC, KC_LPRN, KC_LCBR,          KC_RCBR, KC_RPRN, KC_RBRC, KC_RABK, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_LPRN, KC_LCBR,          KC_RCBR, KC_RPRN, KC_RBRC, XXXXXXX, XXXXXXX, XXXXXXX,
                                         _______, _______, _______, _______, _______
   ),
 
