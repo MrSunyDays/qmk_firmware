@@ -63,20 +63,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Lower
    * ,-----------------------------------------+         +-----------------------------------------.
-   * |      |  F1  |  F2  |  F3  |  F4  |  F5  |         |      | Home | PgDn | PgUp | End  |      |
+   * |      |  F1  |  F2  |  F3  |  F4  |  F5  |         |      | Home | PgDn | PgUp | End  |VolUp |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * | Caps |  F6  |  F7  |  F8  |  F9  | F10  |         |      | Left | Down |  Up  |Right |      |
+   * | Caps |  F6  |  F7  |  F8  |  F9  | F10  |         |      | Left | Down |  Up  |Right |VolDwn|
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * | Esc  |  F11 |  F12 |      |      |      |         |      | Del  |      |      |      |      |
+   * | Esc  |  F11 |  F12 |      |      |      |         |      | Del  |      |      |      | Mute |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    *                             |      |      |         |      |      |
    *                             +-------------/         \-------------+
    */
   [_LOWER] = LAYOUT_reviung41(
-    XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,             XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC__VOLUP,
-    KC_CAPS, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,            XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC__VOLDOWN,
-    KC_ESC,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, KC__MUTE,
-                                        _______, _______,  _______, _______, _______
+    XXXXXXX, KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,             XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC__VOLUP,
+    KC_CAPS, KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,            XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC__VOLDOWN,
+    KC_ESC,  KC_F11, KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, KC__MUTE,
+                                      _______, _______,  _______, _______, _______
   ),
 
   /* Raise
