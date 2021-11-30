@@ -105,13 +105,66 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* ) */
 
   [_ADJUST] = LAYOUT_reviung41(
-    RGB_VAI,   RGB_SAI, RGB_HUI,  RGB_MOD,  XXXXXXX,   RGB_TOG,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    RGB_VAD,   RGB_SAD, RGB_HUD,  RGB_RMOD, XXXXXXX,   XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                                            _______,   _______,  XXXXXXX,  _______,  _______
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+                                        _______, _______,  XXXXXXX,  _______,  _______
   ),
 };
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+#ifdef RGBLIGHT_ENABLE
+// RGB LED Indicators
+const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 11, HSV_RED}    // Light 11 LED, starting with LED 0
+);
+
+// RGB LED Indicators
+const rgblight_segment_t PROGMEM my_base_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 11, HSV_MY_LIGHTGREEN}    // Light 11 LED, starting with LED 0
+);
+
+const rgblight_segment_t PROGMEM my_lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 11, HSV_MY_BLUE}  // Light 11 LED, starting with LED 1
+);
+
+// RGB LED Indicators
+const rgblight_segment_t PROGMEM my_rise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 11, HSV_MY_ORANGE}    // Light 11 LED, starting with LED 0
+);
+
+
+// RGB LED Indicators
+const rgblight_segment_t PROGMEM my_adjust_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 11, HSV_MY_PURPLE}    // Light 11 LED, starting with LED 0
+);
+
+// Now define the array of layers. Later layers take precedence
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    my_base_layer,          // 0
+    my_lower_layer,         // 1
+    my_rise_layer,          // 2
+    my_adjust_layer,        // 3
+    my_capslock_layer       // 4
+);
+
+// Enable the LED layers
+void keyboard_post_init_user(void) {
+    rgblight_layers = my_rgb_layers;
 }
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+
+    rgblight_set_layer_state(0, layer_state_cmp(state, _BASE));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
+    rgblight_set_layer_state(3, layer_state_cmp(state, _ADJUST));
+
+    return state;
+}
+
+bool led_update_user(led_t led_state) {
+    rgblight_set_layer_state(4, led_state.caps_lock);
+    return true;
+}
+#endif

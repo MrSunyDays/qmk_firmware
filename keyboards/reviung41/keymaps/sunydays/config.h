@@ -12,4 +12,13 @@
 
 #define PERMISSIVE_HOLD
 
+/* Enable light layers */
+#define RGBLIGHT_LAYERS
+#undef RGBLIGHT_ANIMATIONS
+
+#define HSV_MY_BLUE       160, 255, 255
+#define HSV_MY_ORANGE     10, 255, 255
+#define HSV_MY_PURPLE     180, 255, 255
+#define HSV_MY_LIGHTGREEN 60, 255, 255
+
 #endif	/* SUNYDAYS_REVIUNG41_CONFIG */
