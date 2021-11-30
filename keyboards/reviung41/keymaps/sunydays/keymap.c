@@ -120,7 +120,7 @@ const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
 
 // RGB LED Indicators
 const rgblight_segment_t PROGMEM my_base_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 11, HSV_MY_LIGHTGREEN}    // Light 11 LED, starting with LED 0
+    {0, 11, HSV_WHITE}    // Light 11 LED, starting with LED 0
 );
 
 const rgblight_segment_t PROGMEM my_lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
