@@ -45,19 +45,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Base
    * ,-----------------------------------------+         +-----------------------------------------.
-   * |  \   |   Q  |   W  |   E  |   R  |   T  |         |   Y  |   U  |   I  |   O  |   P  |  -   |
+   * |  `   |   Q  |   W  |   E  |   R  |   T  |         |   Y  |   U  |   I  |   O  |   P  |  -   |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    * |  =   |   A  |S/GUI |D/Alt |F/Ctrl|   G  |         |   H  |J/Ctrl|K/Alt |L/GUI |   ;  |  '   |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   * | Tab  |   Z  |   X  |   C  |V/Shft|   B  |         |   N  |M/Shft|   ,  |   .  |   /  |  `   |
+   * | Tab  |   Z  |   X  |   C  |V/Shft|   B  |         |   N  |M/Shft|   ,  |   .  |   /  |  \   |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    *                             | Bspc | Lwr  |  Space  | Rse  | Entr |
    *                             +-------------/         \-------------+
    */
   [_BASE] = LAYOUT_reviung41(
-    KC_BSLS, KC_Q,  KC_W,  KC_E,  KC_R,    KC_T,          KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_MINS,
+    KC_GRV, KC_Q,  KC_W,  KC_E,  KC_R,    KC_T,          KC_Y,  KC_U,   KC_I,    KC_O,   KC_P,    KC_MINS,
     KC_EQL,  KC_A,  GUI_S, ALT_D, CTRL_F,  KC_G,          KC_H,  CTRL_J, ALT_K,   GUI_L,  KC_SCLN, KC_QUOT,
-    KC_TAB,  KC_Z,  KC_X,  KC_C,  SHFT_V,  KC_B,          KC_N,  SHFT_M, KC_COMM, KC_DOT, KC_SLSH, KC_GRV,
+    KC_TAB,  KC_Z,  KC_X,  KC_C,  SHFT_V,  KC_B,          KC_N,  SHFT_M, KC_COMM, KC_DOT, KC_SLSH, KC_BSLS,
                                   KC_BSPC, LOWER, KC_SPC, RAISE, KC_ENT
   ),
 
