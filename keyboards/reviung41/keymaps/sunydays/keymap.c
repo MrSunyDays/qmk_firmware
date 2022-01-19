@@ -1,3 +1,4 @@
+
 /* Copyright 2021 SunyDays
  *
  * This program is free software: you can redistribute it and/or modify
@@ -69,14 +70,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    * | Esc  |  F11 |  F12 |      |      |      |         |      | Del  |      |      |      | Mute |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
+   *                             |      |      |         |Adjust|      |
+   *                             +-------------/         \-------------+
+   */
+  /* [_LOWER] = LAYOUT_reviung41( */
+  /*   XXXXXXX, KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,             XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC__VOLUP, */
+  /*   KC_CAPS, KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,            XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC__VOLDOWN, */
+  /*   KC_ESC,  KC_F11, KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, KC__MUTE, */
+  /*                                     _______, _______,  _______, _______, _______ */
+  /* ), */
+
+  /* Lower
+   * ,-----------------------------------------+         +-----------------------------------------.
+   * |      |      |      | End  |      |  F5  |         |  F6  |      |      |      |  Up  | F11  |
+   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
+   * | Caps | Home |      | Del  |Right |      |         |      |      |      |      |      |      |
+   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
+   * | Esc  |      |      | PgUp |PgDwn | Left |         | Down |      |      |      |      |      |
+   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    *                             |      |      |         |      |      |
    *                             +-------------/         \-------------+
    */
   [_LOWER] = LAYOUT_reviung41(
-    XXXXXXX, KC_F1,  KC_F2,  KC_F3,   KC_F4,   KC_F5,             XXXXXXX, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC__VOLUP,
-    KC_CAPS, KC_F6,  KC_F7,  KC_F8,   KC_F9,   KC_F10,            XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC__VOLDOWN,
-    KC_ESC,  KC_F11, KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,           XXXXXXX, KC_DEL,  XXXXXXX, XXXXXXX, XXXXXXX, KC__MUTE,
-                                      _______, _______,  _______, _______, _______
+    XXXXXXX, XXXXXXX, XXXXXXX, KC_END,  XXXXXXX, KC_F5,            KC_F6,   XXXXXXX, XXXXXXX, XXXXXXX, KC_UP,   KC_F11,
+    KC_CAPS, KC_HOME, XXXXXXX, KC_DEL,  KC_RGHT, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_ESC,  XXXXXXX, XXXXXXX, KC_PGUP, KC_PGDN, KC_LEFT,          KC_DOWN, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                        _______, _______, _______, _______, _______
   ),
 
   /* Raise
@@ -87,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
    * |      |      |      |  [   |  (   |  {   |         |  }   |  )   |  ]   |      |      |      |
    * |------+------+------+------+------+------+         +------+------+------+------+------+------|
-   *                             |      |      |         |      |      |
+   *                             |      |Adjust|         |      |      |
    *                             +-------------/         \-------------+
    */
   [_RAISE] = LAYOUT_reviung41(
@@ -97,17 +116,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         _______, _______, _______, _______, _______
   ),
 
-  /* [_MOUSE] = LAYOUT_reviung41( */
-  /*   _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, */
-  /*   _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, */
-  /*   _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______, */
-  /*                                       _______, _______, _______, _______, _______ */
-  /* ) */
-
+  /* Adjust
+   * ,-----------------------------------------+         +-----------------------------------------.
+   * |      |      |      |      |      | RGB  |         |      |      |      |      |      |Reset |
+   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
+   * |      |      |      |      |      |      |         |      |      |      |      |      |      |
+   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
+   * |      |      |      |      |      |      |         |VolUp |VolDwn|VolMut|      |      |      |
+   * |------+------+------+------+------+------+         +------+------+------+------+------+------|
+   *                             |      |      |         |      |      |
+   *                             +-------------/         \-------------+
+   */
   [_ADJUST] = LAYOUT_reviung41(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_TOG,            XXXXXXX,     XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, RESET,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            XXXXXXX,     XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,            KC__VOLDOWN, KC__VOLUP, KC__MUTE, XXXXXXX, XXXXXXX, XXXXXXX,
                                         _______, _______,  XXXXXXX,  _______,  _______
   ),
 };
